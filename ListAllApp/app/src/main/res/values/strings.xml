@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ListInstallApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_info_name">App Name</string>
+    <string name="app_info_p_name">Package Name</string>
+    <string name="app_info_version">App Version</string>
+    <string name="app_info_permission">Permissions</string>
+    <string name="app_info_storage">Storage</string>
+    <string name="app_info_install">Install Day</string>
+    <string name="app_info_update">Updated Day</string>
+    <string name="app_info_chplay">CHPlay</string>
+</resources>

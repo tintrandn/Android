@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -26,7 +27,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private static final String CHPLAY = "http://play.google.com/store/apps/details?id=";
-    private static final int MY_PERMISSIONS_REQUEST_GET_PACKAGE_SIZE = 1;
+    //    private static final int MY_PERMISSIONS_REQUEST_GET_PACKAGE_SIZE = 1;
     private List<AppInfos> mAppInfosList = new ArrayList<>();
     private ListAppAdapter mListAppAdapter;
 
@@ -35,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RecyclerView mRecyclerView = findViewById(R.id.recycle_view);
-        mListAppAdapter = new ListAppAdapter(mAppInfosList, getApplicationContext());
-        RecyclerView.LayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 3);
+        mListAppAdapter = new ListAppAdapter(mAppInfosList);
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        RecyclerView.LayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), displayMetrics.widthPixels < displayMetrics.heightPixels ? 3 : 4);
         mRecyclerView.setLayoutManager(gridLayoutManager);
         mRecyclerView.setAdapter(mListAppAdapter);
 //      checkPermission();

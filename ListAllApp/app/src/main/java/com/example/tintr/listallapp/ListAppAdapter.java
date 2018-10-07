@@ -1,14 +1,11 @@
 package com.example.tintr.listallapp;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -17,7 +14,6 @@ import java.util.List;
 
 public class ListAppAdapter extends RecyclerView.Adapter<ListAppAdapter.ViewHolder> {
     private List<AppInfos> mAppInfos;
-    private Context mContext;
 //    private AppIconClick mAppIconClick;
 //    private AppInfoClick mAppInfoClick;
 
@@ -28,9 +24,8 @@ public class ListAppAdapter extends RecyclerView.Adapter<ListAppAdapter.ViewHold
 //        this.mAppInfoClick = mAppInfoClick;
 //    }
 
-    ListAppAdapter(List<AppInfos> mAppInfos, Context mContext) {
+    ListAppAdapter(List<AppInfos> mAppInfos) {
         this.mAppInfos = mAppInfos;
-        this.mContext = mContext;
     }
 
     @Override
@@ -75,10 +70,6 @@ public class ListAppAdapter extends RecyclerView.Adapter<ListAppAdapter.ViewHold
             appName = itemView.findViewById(R.id.app_name);
             appIcon = itemView.findViewById(R.id.app_icon);
             appInfo = itemView.findViewById(R.id.app_info);
-            DisplayMetrics displayMetrics = mContext.getResources().getDisplayMetrics();
-            int imageSize = displayMetrics.widthPixels / 3 - 30;
-            LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(imageSize, imageSize);
-            appIcon.setLayoutParams(parms);
         }
     }
 

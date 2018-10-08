@@ -5,4 +5,9 @@
             <solid android:color="@color/fore_ground" />
         </shape>
     </item>
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/fore_ground" />
+        </shape>
+    </item>
 </selector>

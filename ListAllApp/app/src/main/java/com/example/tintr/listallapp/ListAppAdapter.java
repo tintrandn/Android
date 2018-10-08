@@ -1,11 +1,16 @@
 package com.example.tintr.listallapp;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -13,7 +18,11 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.List;
 
 public class ListAppAdapter extends RecyclerView.Adapter<ListAppAdapter.ViewHolder> {
+
     private List<AppInfos> mAppInfos;
+    private int mLastPosition = -1;
+    private Context mContext;
+
 //    private AppIconClick mAppIconClick;
 //    private AppInfoClick mAppInfoClick;
 
@@ -24,7 +33,8 @@ public class ListAppAdapter extends RecyclerView.Adapter<ListAppAdapter.ViewHold
 //        this.mAppInfoClick = mAppInfoClick;
 //    }
 
-    ListAppAdapter(List<AppInfos> mAppInfos) {
+    ListAppAdapter(Context mContext, List<AppInfos> mAppInfos) {
+        this.mContext = mContext;
         this.mAppInfos = mAppInfos;
     }
 
@@ -39,7 +49,7 @@ public class ListAppAdapter extends RecyclerView.Adapter<ListAppAdapter.ViewHold
         final AppInfos applicationInfo = mAppInfos.get(position);
         holder.appIcon.setImageDrawable(applicationInfo.getAppIcon());
         holder.appName.setText(applicationInfo.getAppName());
-        holder.appIcon.setOnClickListener(new View.OnClickListener() {
+        holder.appFrame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                mAppIconClick.onAppIconClick(applicationInfo);
@@ -53,6 +63,18 @@ public class ListAppAdapter extends RecyclerView.Adapter<ListAppAdapter.ViewHold
                 EventBus.getDefault().post(new BusEvent("AppInfo", applicationInfo));
             }
         });
+
+        if (holder.getAdapterPosition() > mLastPosition) {
+            Animation animation = AnimationUtils.loadAnimation(mContext,
+                    R.anim.slide_up);
+            holder.itemView.startAnimation(animation);
+            mLastPosition = holder.getAdapterPosition();
+        } else {
+            Animation animation = AnimationUtils.loadAnimation(mContext,
+                    R.anim.slide_up);
+            holder.itemView.startAnimation(animation);
+            mLastPosition = holder.getAdapterPosition();
+        }
     }
 
     @Override
@@ -64,12 +86,18 @@ public class ListAppAdapter extends RecyclerView.Adapter<ListAppAdapter.ViewHold
         private TextView appName;
         private ImageView appIcon;
         private ImageView appInfo;
+        private CardView appFrame;
 
         ViewHolder(View itemView) {
             super(itemView);
+            appFrame = itemView.findViewById(R.id.app_frame);
             appName = itemView.findViewById(R.id.app_name);
             appIcon = itemView.findViewById(R.id.app_icon);
             appInfo = itemView.findViewById(R.id.app_info);
+            DisplayMetrics displayMetrics = mContext.getResources().getDisplayMetrics();
+            int size = displayMetrics.widthPixels < displayMetrics.heightPixels? displayMetrics.widthPixels / 3 : displayMetrics.widthPixels / 4;
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(size - 30, size - 30);
+            appIcon.setLayoutParams(layoutParams);
         }
     }
 

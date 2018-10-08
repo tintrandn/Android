@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RecyclerView mRecyclerView = findViewById(R.id.recycle_view);
-        mListAppAdapter = new ListAppAdapter(mAppInfosList);
+        mListAppAdapter = new ListAppAdapter(getApplicationContext(), mAppInfosList);
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         RecyclerView.LayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), displayMetrics.widthPixels < displayMetrics.heightPixels ? 3 : 4);
         mRecyclerView.setLayoutManager(gridLayoutManager);

@@ -6,15 +6,18 @@ import android.content.pm.IPackageStatsObserver;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageStats;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.DisplayMetrics;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
@@ -41,7 +44,20 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), displayMetrics.widthPixels < displayMetrics.heightPixels ? 3 : 4);
         mRecyclerView.setLayoutManager(gridLayoutManager);
         mRecyclerView.setAdapter(mListAppAdapter);
+        addItemTouchCallback(mRecyclerView);
 //      checkPermission();
+    }
+
+    // drag and drop in recycleview
+    private void addItemTouchCallback(RecyclerView mRecyclerView) {
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(new ItemTouchListenner() {
+            @Override
+            public void onMove(int oldPosition, int newPosition) {
+                mListAppAdapter.onMove(oldPosition, newPosition);
+            }
+        });
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+        itemTouchHelper.attachToRecyclerView(mRecyclerView);
     }
 
 //    private void checkPermission() {
@@ -120,17 +136,29 @@ public class MainActivity extends AppCompatActivity {
 
     private void getAppStorage(AppInfos appInfos) {
         PackageManager pm = getPackageManager();
-        Method getPackageSizeInfo;
-        try {
-            getPackageSizeInfo = pm.getClass().getMethod(
-                    "getPackageSizeInfo", String.class,
-                    IPackageStatsObserver.class);
-            getPackageSizeInfo.invoke(pm, appInfos.getAppPackage(),
-                    new CachePackState(appInfos)); //Call the inner class
-        } catch (SecurityException | NoSuchMethodException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-            e.printStackTrace();
-            appInfos.setAppStorage("Because of security, Android 8 above will not support");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            try {
+                ApplicationInfo applicationInfo = pm.getApplicationInfo(appInfos.getAppPackage(), 0);
+                File file = new File(applicationInfo.publicSourceDir);
+                float size = (float) (file.length() / 1024.0 / 1024.0);
+                appInfos.setAppStorage(String.valueOf(Math.round(size * 100.0) / 100.0) + "MB");
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
             getSupportFragmentManager().beginTransaction().replace(R.id.app_detail_container, AppDetailFragment.newInstance(appInfos)).addToBackStack(null).commit();
+        } else {
+            pm = getPackageManager();
+            Method getPackageSizeInfo;
+            try {
+                getPackageSizeInfo = pm.getClass().getMethod(
+                        "getPackageSizeInfo", String.class,
+                        IPackageStatsObserver.class);
+                getPackageSizeInfo.invoke(pm, appInfos.getAppPackage(),
+                        new CachePackState(appInfos)); //Call the inner class
+            } catch (SecurityException | NoSuchMethodException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+                e.printStackTrace();
+                getSupportFragmentManager().beginTransaction().replace(R.id.app_detail_container, AppDetailFragment.newInstance(appInfos)).addToBackStack(null).commit();
+            }
         }
     }
 

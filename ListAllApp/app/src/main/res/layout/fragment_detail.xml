@@ -34,10 +34,10 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_marginEnd="1dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
             android:background="@color/colorGray" />
 
         <LinearLayout
@@ -62,10 +62,10 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_marginEnd="1dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
             android:background="@color/colorGray" />
 
         <LinearLayout
@@ -90,10 +90,10 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_marginEnd="1dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
             android:background="@color/colorGray" />
 
         <LinearLayout
@@ -103,10 +103,10 @@
             android:padding="5dp">
 
             <TextView
+                android:id="@+id/app_size"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2.5"
-                android:text="@string/app_info_storage" />
+                android:layout_weight="2.5" />
 
             <TextView
                 android:id="@+id/app_info_storage"
@@ -118,10 +118,10 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_marginEnd="1dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
             android:background="@color/colorGray" />
 
         <LinearLayout
@@ -146,10 +146,10 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_marginEnd="1dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
             android:background="@color/colorGray" />
 
         <LinearLayout
@@ -174,10 +174,10 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_marginEnd="1dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
             android:background="@color/colorGray" />
 
         <LinearLayout
@@ -202,10 +202,10 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_marginEnd="1dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
             android:background="@color/colorGray" />
 
         <LinearLayout
@@ -225,17 +225,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
-                android:textColor="@drawable/select_fore_ground"
+                android:textColor="@drawable/web_link_selector"
                 android:autoLink="web" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_marginEnd="1dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
             android:background="@color/colorGray" />
     </LinearLayout>
 </ScrollView>

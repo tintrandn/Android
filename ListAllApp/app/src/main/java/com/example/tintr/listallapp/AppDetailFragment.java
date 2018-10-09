@@ -1,7 +1,6 @@
 package com.example.tintr.listallapp;
 
-import android.content.Context;
-import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,6 +16,7 @@ public class AppDetailFragment extends Fragment {
     private TextView mAppName;
     private TextView mAppPackage;
     private TextView mAppVersion;
+    private TextView mAppSize;
     private TextView mAppStorage;
     private TextView mAppListPermission;
     private TextView mAppInstallDay;
@@ -51,6 +51,7 @@ public class AppDetailFragment extends Fragment {
         mAppPackage = view.findViewById(R.id.app_info_p_name);
         mAppVersion = view.findViewById(R.id.app_info_version);
         mAppListPermission = view.findViewById(R.id.app_info_permission);
+        mAppSize = view.findViewById(R.id.app_size);
         mAppStorage = view.findViewById(R.id.app_info_storage);
         mAppInstallDay = view.findViewById(R.id.app_info_install);
         mAppUpdatedDay = view.findViewById(R.id.app_info_updated);
@@ -63,6 +64,7 @@ public class AppDetailFragment extends Fragment {
     }
 
     private void updatedLayout() {
+        mAppSize.setText(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? R.string.app_info_apk_size : R.string.app_info_app_size);
         mAppName.setText(mAppInfos.getAppName());
         mAppPackage.setText(mAppInfos.getAppPackage());
         mAppVersion.setText(mAppInfos.getAppVersion());

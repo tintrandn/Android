@@ -6,7 +6,8 @@
     <string name="app_info_p_name">Package Name</string>
     <string name="app_info_version">App Version</string>
     <string name="app_info_permission">Permissions</string>
-    <string name="app_info_storage">Storage</string>
+    <string name="app_info_apk_size">APK Size</string>
+    <string name="app_info_app_size">App Data</string>
     <string name="app_info_install">Install Day</string>
     <string name="app_info_update">Updated Day</string>
     <string name="app_info_chplay">CHPlay</string>

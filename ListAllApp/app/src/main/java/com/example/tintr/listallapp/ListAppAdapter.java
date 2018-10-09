@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ListAppAdapter extends RecyclerView.Adapter<ListAppAdapter.ViewHolder> {
@@ -82,6 +83,19 @@ public class ListAppAdapter extends RecyclerView.Adapter<ListAppAdapter.ViewHold
         return mAppInfos.size();
     }
 
+    void onMove(int fromPosition, int toPosition) {
+        if (fromPosition < toPosition) {
+            for (int i = fromPosition; i < toPosition; i++) {
+                Collections.swap(mAppInfos, i, i + 1);
+            }
+        } else {
+            for (int i = fromPosition; i > toPosition; i--) {
+                Collections.swap(mAppInfos, i, i - 1);
+            }
+        }
+        notifyItemMoved(fromPosition, toPosition);
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView appName;
         private ImageView appIcon;
@@ -95,7 +109,7 @@ public class ListAppAdapter extends RecyclerView.Adapter<ListAppAdapter.ViewHold
             appIcon = itemView.findViewById(R.id.app_icon);
             appInfo = itemView.findViewById(R.id.app_info);
             DisplayMetrics displayMetrics = mContext.getResources().getDisplayMetrics();
-            int size = displayMetrics.widthPixels < displayMetrics.heightPixels? displayMetrics.widthPixels / 3 : displayMetrics.widthPixels / 4;
+            int size = displayMetrics.widthPixels < displayMetrics.heightPixels ? displayMetrics.widthPixels / 3 : displayMetrics.widthPixels / 4;
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(size - 30, size - 30);
             appIcon.setLayoutParams(layoutParams);
         }

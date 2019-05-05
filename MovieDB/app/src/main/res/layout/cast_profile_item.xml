@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="160dp">
+    <LinearLayout
+        android:layout_width="115dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:layout_width="109sp"
+            android:layout_height="136sp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            android:id="@+id/cast_profile"
+            android:src="@android:drawable/ic_dialog_alert"
+            android:foregroundGravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/cast_name"
+            android:text="Saitama"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textStyle="bold" />
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="tintrandn.co.jp.moviestore">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/MyMaterialTheme"
+        android:largeHeap="true">
+        <activity android:name=".activity.MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="tintrandn.co.jp.moviestore.activity.ProfileEdit"/>
+
+        <provider
+            android:name=".model.storage.provider.RemindProvider"
+            android:authorities="tintrandn.co.jp.moviestore.model.storage.db.Remind">
+        </provider>
+        <provider
+            android:name=".model.storage.provider.FavouriteProvider"
+            android:authorities="tintrandn.co.jp.moviestore.model.storage.db.Favourite" >
+        </provider>
+        <provider
+            android:name=".model.storage.provider.MovieProvider"
+            android:authorities="tintrandn.co.jp.moviestore.model.storage.db.Movie" >
+        </provider>
+        <provider
+            android:name=".model.storage.provider.UserProfileProvider"
+            android:authorities="tintrandn.co.jp.moviestore.model.storage.db.User" >
+        </provider>
+
+        <receiver android:name=".util.NotificationServices">
+        </receiver>
+
+        <receiver android:name=".util.AlarmService">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.DATE_CHANGED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

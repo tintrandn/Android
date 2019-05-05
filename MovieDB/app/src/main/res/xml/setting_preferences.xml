@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <PreferenceCategory
+        android:title="Filter"
+        android:key="pref_key_filter_settings">
+        <ListPreference
+            android:key="pref_key_movie_category"
+            android:title="Category"
+            android:entries="@array/listArray_Category"
+            android:entryValues="@array/listValues_Category"
+            android:defaultValue="Popular Movies"
+            android:dialogTitle="Category" />
+        <Preference
+            android:key="pref_key_movie_rate_from"
+            android:title="Movie with rate from"
+            android:defaultValue="0" />
+        <EditTextPreference
+            android:key="pref_key_movie_release_from"
+            android:title="From release year"
+            android:defaultValue="2015"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Sort"
+        android:key="pref_key_sort_settings">
+        <ListPreference
+            android:key="pref_key_movie_sort_by"
+            android:title="Sort By"
+            android:entries="@array/listArray_Sort"
+            android:entryValues="@array/listValues_Sort"
+            android:defaultValue="Release Date"
+            android:dialogTitle="Sort By" />
+    </PreferenceCategory>
+</PreferenceScreen>

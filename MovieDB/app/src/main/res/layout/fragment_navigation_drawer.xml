@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorGray">
+
+    <RelativeLayout
+        android:id="@+id/nav_header_container"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/colorGray"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_picture"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/circle"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/colorAccent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/user_name"
+            android:layout_marginTop="10dp"
+            android:text="Recuilt"
+            android:textStyle="italic|bold"
+            android:layout_below="@+id/profile_picture"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/line_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/nav_header_container">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_mail" />
+
+        <TextView
+            android:id="@+id/user_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sample@recuit.com"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/line_birthday"
+        android:orientation="horizontal"
+        android:layout_below="@+id/line_name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_cake" />
+
+        <TextView
+            android:id="@+id/user_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01-01-2017"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/line_gender"
+        android:layout_below="@+id/line_birthday"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_person"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/user_gender"
+            android:text="Male"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Edit"
+        android:id="@+id/btn_profile_edit"
+        android:background="@drawable/round_button"
+        android:layout_below="@+id/line_gender"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/textColorPrimary"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:layout_marginTop="5dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/line_remind"
+        android:orientation="vertical"
+        android:layout_below="@+id/btn_profile_edit"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Remind"
+            android:textStyle="bold|italic" />
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/remind_drawer_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nav_header_container"
+            android:background="@drawable/round" />
+    </android.support.v7.widget.CardView>
+        <!--Remind list-->
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/line_remind"
+        android:id="@+id/btn_profile_showall"
+        android:text="Show All"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:background="@drawable/round_button"
+        android:textColor="@color/textColorPrimary"
+        android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>

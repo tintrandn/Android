@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:appcompat="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/action_show"
+        android:icon="@mipmap/ic_grid_on_white"
+        android:title="Show movie list"
+        app:showAsAction="always"
+        android:visible="false"/>
+
+    <item android:id="@+id/action_search"
+        android:icon="@mipmap/ic_search_white"
+        android:title="@string/action_search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always|collapseActionView"
+        android:visible="false"/>
+
+    <item android:id="@+id/action_movie"
+        android:title="@string/movies"
+        app:showAsAction="never"/>
+    <item android:id="@+id/action_favourite"
+        android:title="@string/favourite"
+        app:showAsAction="never"/>
+    <item android:id="@+id/action_settings"
+        android:title="@string/settings"
+        app:showAsAction="never"/>
+    <item android:id="@+id/action_about"
+        android:title="@string/about"
+        app:showAsAction="never"/>
+</menu>
